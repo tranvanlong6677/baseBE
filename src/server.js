@@ -1,6 +1,6 @@
 import express from "express";
 import * as dotenv from "dotenv";
-import connection from './config/database.js'
+import connection from "./config/database.js";
 dotenv.config();
 
 const app = express();
@@ -14,14 +14,17 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.send("Hello World 11111111!");
 });
+app.get("/test", (req, res) => {
+  res.send("test");
+});
 
 (async () => {
-    try {
-      await connection();
-      app.listen(port, hostname, () => {
-        console.log(`App listening on port ${port}`);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  })();
+  try {
+    await connection();
+    app.listen(port, hostname, () => {
+      console.log(`App listening on port ${port}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+})();
